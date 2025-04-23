@@ -32,7 +32,7 @@ async def on_message(message):
         current_day = datetime.utcnow().day
         gpt4_requests_today = 0
 
-    if message.content.startswith("!gpt "):
+    if message.content.startswith("!Львович "):
         prompt = message.content[5:]
         try:
             response = openai.ChatCompletion.create(
@@ -50,7 +50,7 @@ async def on_message(message):
             await message.channel.send(f"❌ Помилка: {e}")
         return
 
-    if message.content.startswith("!профи "):
+    if message.content.startswith("!Львович+ "):
         if gpt4_requests_today >= 20:
             await message.channel.send("⚠️ Ліміт на GPT-4 запити сьогодні вичерпано (20/день). Спробуйте завтра.")
             return
@@ -71,7 +71,7 @@ async def on_message(message):
                 for i in range(0, len(reply), 2000):
                     await message.channel.send(reply[i:i+2000])
             else:
-                await message.channel.send(f"🧠 GPT-4o каже:\n{reply}")
+                await message.channel.send(f"🧠 Львович каже:\n{reply}")
 
         except Exception as e:
             await message.channel.send(f"❌ Помилка GPT-4o: {e}")
