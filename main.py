@@ -72,7 +72,7 @@ async def on_message(message):
                 for i in range(0, len(reply), 2000):
                     await message.channel.send(reply[i:i+2000])
             else:
-                 await message.channel.send(f"🧠 Львович каже:\n{reply}")
+                await message.channel.send(f"🧠 Львович каже:\n{reply}")
 
         except Exception as e:
             await message.channel.send(f"❌ Помилка GPT-4: {e}")
