@@ -54,7 +54,7 @@ async def on_message(message):
         prompt = message.content[7:]
         try:
             response = openai.ChatCompletion.create(
-                model="gpt-4",
+                model="gpt-4o",
                 messages=[{"role": "user", "content": prompt}]
             )
             reply = response.choices[0].message.content
