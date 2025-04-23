@@ -38,7 +38,8 @@ async def on_message(message):
         try:
             response = openai.ChatCompletion.create(
                 model="gpt-3.5-turbo",
-                messages=[{"role": "user", "content": prompt}]
+                messages=[{"role": "user", "content": prompt}],
+                max_tokens=700
             )
             reply = response.choices[0].message.content
             await message.channel.send(reply)
@@ -55,7 +56,11 @@ async def on_message(message):
         try:
             response = openai.ChatCompletion.create(
                 model="gpt-4o",
-                messages=[{"role": "user", "content": prompt}]
+                messages=[
+                    {"role": "system", "content": "Ти професійний фізіотерапевт і викладач. Відповідай чітко, але розгорнуто, з прикладами, якщо доречно."},
+                    {"role": "user", "content": prompt}
+                ],
+                max_tokens=1000
             )
             reply = response.choices[0].message.content
             gpt4_requests_today += 1
