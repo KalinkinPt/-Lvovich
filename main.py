@@ -48,7 +48,7 @@ async def on_message(message):
 
     if message.content.startswith("!Львович+ "):
         if gpt4_requests_today >= 20:
-            await message.channel.send("⚠️ Ліміт на !Львович+ запити сьогодні вичерпано (20/день). Спробуйте завтра.")
+            await message.channel.send("⚠️ Ліміт на GPT-4 запити сьогодні вичерпано (20/день). Спробуйте завтра.")
             return
 
         prompt = message.content[7:]
@@ -59,10 +59,10 @@ async def on_message(message):
             )
             reply = response.choices[0].message.content
             gpt4_requests_today += 1
-            await message.channel.send(f"🧠 !Львович каже:
+            await message.channel.send(f"🧠 GPT-4 каже:
 {reply}")
         except Exception as e:
-            await message.channel.send(f"❌ Помилка !Львович: {e}")
+            await message.channel.send(f"❌ Помилка GPT-4: {e}")
         return
 
 client.run(DISCORD_TOKEN)
